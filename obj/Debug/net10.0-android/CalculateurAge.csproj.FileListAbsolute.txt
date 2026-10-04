@@ -1596,3 +1596,4 @@
 /home/klein/Documents/projects/CalculateurAge/obj/Debug/net10.0-android/stamp/_GenerateJavaStubs.stamp
 /home/klein/Documents/projects/CalculateurAge/obj/Debug/net10.0-android/stamp/_GeneratePackageManagerJava.stamp
 /home/klein/Documents/projects/CalculateurAge/obj/Debug/net10.0-android/stamp/_ResolveLibraryProjectImports.stamp
+/home/klein/Documents/projects/CalculateurAge/obj/Debug/net10.0-android/CalculateurAge.sourcelink.json
