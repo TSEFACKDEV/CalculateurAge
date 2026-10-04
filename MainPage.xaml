@@ -5,34 +5,41 @@
     Title="Calculateur">
 
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="12">
+    <VerticalStackLayout Padding="20" Spacing="12">
 
-            <Label
-                Text="Nom"
-                FontSize="16" />
+        <Label Text="Nom" FontSize="16"/>
+        <Entry Text="{Binding Nom, Mode=TwoWay}" Placeholder="Votre nom"/>
 
-            <Entry
-                Text="{Binding Nom, Mode=TwoWay}"
-                Placeholder="Votre nom" />
+        <Label Text="Date de naissance" FontSize="16"/>
+        <DatePicker Date="{Binding DateNaissance}"/>
 
-            <Label
-                Text="Date de naissance"
-                FontSize="16" />
+        <Button Text="Calculer" Command="{Binding CalculerCommand}"/>
+        <Button Text="Effacer" Command="{Binding EffacerCommand}"/>
 
-            <DatePicker
-                Date="{Binding DateNaissance}" />
+        <Label Text="{Binding MessageErreur}" TextColor="Red"
+               IsVisible="{Binding MessageErreurVisible}"/>
 
-            <Button
-                Text="Calculer"
-                Command="{Binding CalculerCommand}" />
+        <Label Text="{Binding Resultat}" FontSize="20"
+               IsVisible="{Binding ResultatVisible}"/>
 
-            <Label
-                Text="{Binding Resultat}"
-                FontSize="20"
-                IsVisible="{Binding ResultatVisible}" />
+        <Label Text="{Binding Categorie}" FontSize="18"
+               IsVisible="{Binding ResultatVisible}"/>
 
-        </VerticalStackLayout>
-    </ScrollView>
+        <Label FontSize="16"
+               IsVisible="{Binding ResultatVisible}"
+               Text="{Binding JoursRestants, StringFormat='Jours restants avant le prochain anniversaire : {0}'}"/>
+
+        <Label Text="Historique" FontSize="16" Margin="0,20,0,0"/>
+        <CollectionView ItemsSource="{Binding Historique}" HeightRequest="150">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding .}" FontSize="14"/>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </VerticalStackLayout>
+</ScrollView>
 
 
 </ContentPage>
