@@ -1,45 +1,68 @@
-﻿<ContentPage
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="CalculateurAge.MainPage"
-    Title="Calculateur">
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CalculateurAge.MainPage"
+             Title="Calculateur">
 
     <ScrollView>
-    <VerticalStackLayout Padding="20" Spacing="12">
+        <VerticalStackLayout Padding="20" Spacing="12">
 
-        <Label Text="Nom" FontSize="16"/>
-        <Entry Text="{Binding Nom, Mode=TwoWay}" Placeholder="Votre nom"/>
+            <!-- Champ Nom -->
+            <Label Text="Nom" FontSize="16"/>
+            <Entry Text="{Binding Nom, Mode=TwoWay}" 
+                   Placeholder="Votre nom"/>
 
-        <Label Text="Date de naissance" FontSize="16"/>
-        <DatePicker Date="{Binding DateNaissance}"/>
+            <!-- Champ Date de naissance -->
+            <Label Text="Date de naissance" FontSize="16"/>
+            <DatePicker Date="{Binding DateNaissance}"/>
 
-        <Button Text="Calculer" Command="{Binding CalculerCommand}"/>
-        <Button Text="Effacer" Command="{Binding EffacerCommand}"/>
+            <!-- Boutons Calculer et Effacer -->
+            <Button Text="Calculer" 
+                    Command="{Binding CalculerCommand}"/>
+            <Button Text="Effacer" 
+                    Command="{Binding EffacerCommand}"/>
 
-        <Label Text="{Binding MessageErreur}" TextColor="Red"
-               IsVisible="{Binding MessageErreurVisible}"/>
+            <!-- Message d'erreur (date future) -->
+            <Label Text="{Binding MessageErreur}" 
+                   TextColor="Red"
+                   FontSize="14"
+                   IsVisible="{Binding MessageErreurVisible}"/>
 
-        <Label Text="{Binding Resultat}" FontSize="20"
-               IsVisible="{Binding ResultatVisible}"/>
+            <!-- Résultat principal -->
+            <Label Text="{Binding Resultat}" 
+                   FontSize="20"
+                   IsVisible="{Binding ResultatVisible}"/>
 
-        <Label Text="{Binding Categorie}" FontSize="18"
-               IsVisible="{Binding ResultatVisible}"/>
+            <!-- Catégorie Majeur / Mineur -->
+            <Label Text="{Binding Categorie}" 
+                   FontSize="18"
+                   IsVisible="{Binding ResultatVisible}"/>
 
-        <Label FontSize="16"
-               IsVisible="{Binding ResultatVisible}"
-               Text="{Binding JoursRestants, StringFormat='Jours restants avant le prochain anniversaire : {0}'}"/>
+            <!-- Jours restants avant le prochain anniversaire -->
+            <Label FontSize="16"
+                   IsVisible="{Binding ResultatVisible}"
+                   Text="{Binding JoursRestants, StringFormat='Jours restants avant le prochain anniversaire : {0}'}"/>
 
-        <Label Text="Historique" FontSize="16" Margin="0,20,0,0"/>
-        <CollectionView ItemsSource="{Binding Historique}" HeightRequest="150">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Label Text="{Binding .}" FontSize="14"/>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+            <!-- Bouton pour naviguer vers ResultatPage via le ViewModel -->
+            <Button Text="Voir le résultat détaillé"
+                    Command="{Binding VoirResultatCommand}"
+                    IsVisible="{Binding ResultatVisible}"/>
 
-    </VerticalStackLayout>
-</ScrollView>
+            <!-- Historique des calculs -->
+            <Label Text="Historique" 
+                   FontSize="16" 
+                   Margin="0,20,0,0"/>
+            <CollectionView ItemsSource="{Binding Historique}" 
+                            HeightRequest="150">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding .}" 
+                               FontSize="14"/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
+        </VerticalStackLayout>
+    </ScrollView>
 
 </ContentPage>

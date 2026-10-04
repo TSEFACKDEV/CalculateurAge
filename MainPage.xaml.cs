@@ -4,10 +4,9 @@ namespace CalculateurAge;
 
 public partial class MainPage : ContentPage
 {
-    public MainPage()
+    public MainPage(CalculateurViewModel vm)
     {
         InitializeComponent();
-
-        BindingContext = new CalculateurViewModel();
+        BindingContext = vm;
     }
 }
